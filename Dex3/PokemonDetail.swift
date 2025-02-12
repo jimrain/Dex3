@@ -10,7 +10,7 @@ import CoreData
 
 struct PokemonDetail: View {
     @EnvironmentObject var pokemon: Pokemon
-    @State  var showShiny = false
+    @State  var showShiny = true
     
     var body: some View {
         ScrollView {
@@ -60,10 +60,10 @@ struct PokemonDetail: View {
                     showShiny.toggle()
                 } label: {
                     if showShiny {
-                        Image(systemName: "want.and.stars")
+                        Image(systemName: "wand.and.stars")
                             .foregroundColor(.yellow)
                     } else {
-                        Image(systemName: "wand.and.starts.inverse")
+                        Image(systemName: "wand.and.stars.inverse")
                     }
                 }
             }

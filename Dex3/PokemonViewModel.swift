@@ -29,7 +29,11 @@ class PokemonViewModel: ObservableObject {
     private func getPokemon() async {
         status = .fetching
         do {
-            var pokedex = try await controller.fetchAllPokemon()
+            guard var pokedex = try await controller.fetchAllPokemon() else {
+                print("Pokemon have already been got. We good")
+                status = .success
+                return
+            }
             pokedex.sort { $0.id < $1.id }
             
             // Save each one to core data.
@@ -38,6 +42,7 @@ class PokemonViewModel: ObservableObject {
                 newPokemon.id = Int16(pokemon.id)
                 newPokemon.name = pokemon.name
                 newPokemon.types = pokemon.types
+                newPokemon.organizeTypes()
                 newPokemon.hp = Int16(pokemon.hp)
                 newPokemon.attack = Int16(pokemon.attack)
                 newPokemon.defense = Int16(pokemon.defense)

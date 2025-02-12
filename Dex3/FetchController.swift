@@ -5,6 +5,7 @@
 //  Created by James Rainville on 2/3/25.
 //
 import Foundation
+import CoreData
 
 struct FetchController{
     enum NetworkError: Error{
@@ -13,7 +14,11 @@ struct FetchController{
     
     private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
     
-    func fetchAllPokemon() async throws -> [TempPokemon] {
+    func fetchAllPokemon() async throws -> [TempPokemon]? {
+        if havePokemon(){
+            return nil
+        }
+        
         var allPokemon: [TempPokemon] = []
         
         var  fetchComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
@@ -48,10 +53,27 @@ struct FetchController{
             throw NetworkError.badResponse
         }
         
+        // let decoder = JSONDecoder()
+        // decoder.keyDecodingStrategy = .convertFromSnakeCase
         let tempPokemon = try JSONDecoder().decode(TempPokemon.self, from: data)
         
         print("Feched \(tempPokemon.id): \(tempPokemon.name)")
         
         return tempPokemon
+    }
+    
+    private func havePokemon() -> Bool {
+        let context = PersistenceController.shared.container.newBackgroundContext()
+        
+        let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
+        // Check if you have the first and last pokemon (id 1 and id 386)
+        fetchRequest.predicate = NSPredicate(format: "id IN %@", [1, 386])
+        do {
+            let checkPokemon = try context.fetch(fetchRequest)
+            return checkPokemon.count == 2
+        } catch {
+            print("Fetch failed: \(error)")
+            return false
+        }
     }
 }

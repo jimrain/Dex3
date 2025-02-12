@@ -63,10 +63,10 @@ struct TempPokemon: Codable {
             decodedTyes.append(type)
         }
         types = decodedTyes
-        
-        let statsContainer = try container.nestedUnkeyedContainer(forKey: .stats)
+
+        var statsContainer = try container.nestedUnkeyedContainer(forKey: .stats)
         while !statsContainer.isAtEnd {
-            let statsDictionaryContain = try typesContainer.nestedContainer(keyedBy: PokemonKeys.StatsDictionaryKeys.self)
+            let statsDictionaryContain = try statsContainer.nestedContainer(keyedBy: PokemonKeys.StatsDictionaryKeys.self)
             let statContainer = try statsDictionaryContain.nestedContainer(keyedBy: PokemonKeys.StatsDictionaryKeys.StatKeys.self, forKey: .stat)
             
             switch try statContainer.decode(String.self, forKey: .name) {
@@ -76,9 +76,9 @@ struct TempPokemon: Codable {
                 attack = try statsDictionaryContain.decode(Int.self, forKey: .value)
             case "defense":
                 defense = try statsDictionaryContain.decode(Int.self, forKey: .value)
-            case "specialAttack":
+            case "special-attack":
                 specialAttack = try statsDictionaryContain.decode(Int.self, forKey: .value)
-            case "specialDefense":
+            case "special-defense":
                 specialDefense = try statsDictionaryContain.decode(Int.self, forKey: .value)
             case "speed":
                 speed = try statsDictionaryContain.decode(Int.self, forKey: .value)

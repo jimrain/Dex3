@@ -27,7 +27,7 @@ extension Pokemon {
         }
     }
     
-    // We need this so that we can get the labels. If we just used core date we
+    // We need this so that we can get the labels. If we just used core data we
     // would see the values but not the label ("HP", "Attack", etc)
     // Also this allows us to order them. 
     var stats: [Stat] {
@@ -43,6 +43,12 @@ extension Pokemon {
     
     var highestStat: Stat {
         stats.max{ $0.value < $1.value }!
+    }
+    
+    func organizeTypes() {
+        if self.types!.count == 2 && self.types![0] == "normal" {
+            self.types?.swapAt(0, 1)
+        }
     }
 }
 
