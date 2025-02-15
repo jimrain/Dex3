@@ -10,6 +10,7 @@
 		38BC772D2D5F74AD00821F9C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC772C2D5F74AD00821F9C /* WidgetKit.framework */; };
 		38BC772F2D5F74AD00821F9C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC772E2D5F74AD00821F9C /* SwiftUI.framework */; };
 		38BC77402D5F74AE00821F9C /* Dex3WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 38BC772A2D5F74AD00821F9C /* Dex3WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		38BC77502D60CB9E00821F9C /* Programming Notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 38BC774F2D60CB9E00821F9C /* Programming Notes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		38BC772A2D5F74AD00821F9C /* Dex3WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Dex3WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BC772C2D5F74AD00821F9C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		38BC772E2D5F74AD00821F9C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		38BC774F2D60CB9E00821F9C /* Programming Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Programming Notes.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -107,6 +109,7 @@
 		38A874992D4D04A700EDD6C8 = {
 			isa = PBXGroup;
 			children = (
+				38BC774F2D60CB9E00821F9C /* Programming Notes.md */,
 				38A874A42D4D04A700EDD6C8 /* Dex3 */,
 				38BC77302D5F74AD00821F9C /* Dex3Widget */,
 				38BC772B2D5F74AD00821F9C /* Frameworks */,
@@ -224,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BC77502D60CB9E00821F9C /* Programming Notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
